@@ -1,0 +1,36 @@
+<html>
+
+<body>
+	<script>
+	/*var log=console.log.bind(console);
+	var images=["paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png","paddle.png","ball.png"];
+	var is=[];
+	function loadImage(i)
+	{	
+		var image=new Image();
+		image.src=images[i];
+		log(images[i]);	
+		image.onload=function(){is.push(image);};
+		return new Promise(function(resolve,reject){
+		{resolve(++i)}});
+	}
+	if(images.length>0){
+	var next=new Promise(function(resolve,reject){resolve(0)});
+	for(var i=0;i<images.length;i++){
+		next=next.then(loadImage);
+			}
+		}
+	
+	next.then(function(){log("sucess");}).//setTimeout(runloop,1000/fps);}).
+	catch(function(){log("load ",i," image failed")});		*/
+	function Test(resolve,reject)
+	{
+	setTimeout(function(){console.log("wait done")},100);
+	resolve();
+	return new Promise(function(resolve,reject){console.log("running");});
+	}
+	var p=new Promise(Test);
+	p.then(function(){console.log("running");});
+	</script>
+</body>
+</html>

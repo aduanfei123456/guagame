@@ -1,0 +1,81 @@
+<!DOCTYPR html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>game 1</title>
+	<style>
+	canvas {
+	border:1px solid black ;
+	}
+	</style>
+	<script src='config.js'></script>
+	<script src='guagame/guagame.js'></script>
+	<script src='scene/main/ball.js'></script>
+	<script src='scene/main/paddle.js'></script>
+	<script src='scene/main/block.js'></script>
+	<script src='guagame/utilities.js'></script>
+	<script src='guagame/gua_scene.js'></script>
+	<script src='level.js'></script>
+	<script src='guagame/gua_image.js'></script>
+	<script src='guagame/gua_particle_system.js'></script>
+	<script src='scene/main/scene.js'></script>
+	<script src='scene/end/scene_end.js'></script>
+	<script src='guagame/gua_animation.js'></script>
+	<script src='scene/title/scene_title.js'></script>
+	
+	
+	</head>
+	<body>
+	<canvas id="id-canvas" width="400" height="450"></canvas>
+	<input id='id-input-speed' type ='range' value='1'>
+	<div class='config-value'>
+	
+	</div>
+	<script>
+		var es=sel=>document.querySelectorAll(sel)
+		
+		function addTemplate(item,description){
+			var t="<div><label><input class='gua-auto-slider' max='500' type='range' value='' data-value=config['"+description+"'].k>"+description+"：<span></span></label></div>"
+			return t
+		}
+		function getKey(){
+			var d=es('.config-value')[0]
+			for(var k of Object.keys(config)){
+			var item=config[k]
+			var t=addTemplate(item,item.description)
+				d.insertAdjacentHTML('beforeend',t)
+			}
+		}
+		getKey()
+		var bindAll=function(sel,eventName,callback){
+			var l=es(sel)
+			
+			for(var i=0; i<l.length;i++){
+				var input=l[i]
+				input.addEventListener(eventName,function(event){
+					callback(event)
+				})
+			}
+		}
+		bindAll('.gua-auto-slider','input',function(event){
+			var target=event.target
+			var v=target.value
+			var bindVar=target.dataset.value
+			eval(bindVar+'='+v)
+			var label=target.nextElementSibling
+			label.innerText=v
+		})
+		
+	</script>
+	</body>
+	<script src='main.js'>
+	</script>
+	<script>
+	//log()
+	
+	main()
+
+	
+	
+	</script>
+</html>
